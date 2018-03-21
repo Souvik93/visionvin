@@ -1,0 +1,17 @@
+{
+  "name": "address",
+  "version": "0.0.1",
+  "description": "address classification api wrapper",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Souvik Das",
+  "license": "ISC",
+  "dependencies": {
+    "download": "^6.2.5",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.11",
+    "request": "^2.83.0"
+  }
+}
