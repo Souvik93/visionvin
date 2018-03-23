@@ -103,7 +103,7 @@ app.post('/getAddressDetails', (req, res) => {
         console.log(body);
         googleText = body.responses[0].textAnnotations[0].description;
            console.log(googleText);
-        var pattern = /[A-HJ-NPR-Z0-9]{17}/;
+        var pattern = /{17}/;
 var match = pattern.exec(googleText);
         
         if(match==null)
