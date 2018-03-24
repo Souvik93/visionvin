@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 
 // Main Api
-app.post('/getAddressDetails', (req, res) => {
+app.post('/getVinDetails', (req, res) => {
 
   var imgName = "/dist/card.jpg";
 
@@ -103,7 +103,7 @@ app.post('/getAddressDetails', (req, res) => {
         console.log(body);
         googleText = body.responses[0].textAnnotations[0].description;
            console.log(googleText);
-        var pattern = /w{16,17}/;
+        var pattern = /[a-zA-Z0-9]{9}[a-zA-Z0-9-]{2}[0-9]{6}/g;
 var match = pattern.exec(googleText);
         
         if(match==null)
@@ -112,7 +112,7 @@ var match = pattern.exec(googleText);
        "Status": "Unable To Find VIN No"
    });
         }
-
+else{
 var start = match.index;
 var text = match[0];
 var end = start + text.length;
@@ -145,7 +145,7 @@ request(options, function (error, response, body) {
               }
 });
 
-
+}
         
         
     });
