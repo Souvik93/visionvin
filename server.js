@@ -132,12 +132,15 @@ request(options, function (error, response, body) {
             {
                 console.log("Failed.. Not VIN");
                 res.send({"Status": "Failed.. Unable to classify VINss"});
+                set_attributes.jsonAPIError ="Yes";
+                responseObject.set_attributes = set_attributes;
             }
             else{
 
 
                 //console.log(responseText.addresses[0].api_output[0].delivery_line_1);
                 set_attributes.VehVin = match[0];
+                set_attributes.jsonAPIError ="No";
     
                 responseObject.set_attributes = set_attributes;
                 console.log("Done....");
@@ -154,9 +157,11 @@ request(options, function (error, response, body) {
 })
 .catch((err) => {
     //console.log(err);
-   res.send({
-       "Status": "Unable To Download Image"
-   });
+       
+                set_attributes.jsonAPIError ="Yes";
+    
+                responseObject.set_attributes = set_attributes;
+   res.send(responseObject);
 });
 })
 
